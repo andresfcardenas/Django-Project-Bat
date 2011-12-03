@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}contact{% endblock title %}
+
+{% block right%}
+    <p>No hay contenido para mostrar</p>
+{% endblock right %}
+{% block left %}
+<div id="contact_form">
+    <p><h1>Contactenos</h1></p>
+    <form action="#" method="post">{% csrf_token %}
+    <table>
+        {{ form.as_table }}       
+    </table>
+    <p><input type="submit" value="Submit" class="contact_submit" /></p>
+    </form>
+</div>
+{% endblock left %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}home{% endblock title %}
+
+{% block right %}
+    <h2>ultimos articulos</h2>
+    {% for art in article %}
+        <h3>{{ art.title }}</h3>
+    {% endfor %}
+{% endblock right %}
+
+{% block left %}
+        {% if page_articles %}
+	        {% for art in page_articles.object_list %}
+	            <h1>{{ art.title }}</h1>
+	            <h5><strong>{{ art.autor }}</strong></h5>
+	            <h6>{{ art.pub_date }}</h6>
+	            <p>{{ art.main_content }}</p>
+	            -----------------------------------------------------------
+		  {% endfor %}
+	    {% else %}
+	       <p>No hay articulos para mostrar</p>
+	   {% endif %}	
+    <div class="pagination">
+    	<span class="step-links">
+	        {% if page_articles.has_previous %}
+	            <a href="?page={{ page_articles.previous_page_number }}">Anterior</a>
+	        {% endif %}
+
+	        <span class="current">
+	            Page {{ page_articles.number }} of {{ page_articles.paginator.num_pages }}.
+	        </span>
+
+	        {% if page_articles.has_next %}
+	            <a href="?page={{ page_articles.next_page_number }}">Siguiente</a>
+	        {% endif %}
+    	</span>
+	</div>
+{% endblock left%}

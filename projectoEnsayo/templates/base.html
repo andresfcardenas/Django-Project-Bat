@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load i18n %}{% load compress %}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
+<title>{% block title %}{% endblock title%}</title>
+{% compress css %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="iecss.css" />
+<![endif]-->
+{% block css %} {% endblock css %}
+{% endcompress %}
+</head>
+<body>
+
+<div id="main_container">
+    {% block logo %}
+    <div class="top_illustration">
+        <img src="{{ STATIC_URL }}img/been.png" alt="" title=""  width="156" height="143"/>
+    </div>
+	<div id="header">
+        <div class="logo">
+            <a href="index.html"><img src="{{ STATIC_URL }}img/logo.gif" alt="" title="" border="0" /></a>
+        </div>    
+    </div>
+    {% endblock logo %}
+    
+            <div id="menu_tab">
+                {% block main_menu %}                                     
+                    <ul class="menu">                                                                             
+                        <li><a href="{% url home %}" class="nav_selected"> home </a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url servicios %}" class="nav"> services</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url portafolio %}" class="nav"> portofolio</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url clientes %}" class="nav"> clients</a></li>
+                        <li class="divider"></li>
+                        <li><a href="{% url contacto %}" class="nav"> contact </a></li>
+                    </ul>
+                {% endblock main_menu %}
+            </div> 
+            
+            
+    <div id="main_content">
+    
+    	<div id="middle_banner">    	
+        	<div class="middle_banner_content">
+        	    {% block main_banner %}
+       			 <img src="{{ STATIC_URL }}img/banner_content.png" alt="" title="" width="417" height="142" />
+       			{% endblock main_banner %}
+            </div>        
+        </div>
+        
+        
+        <div id="left_content">
+            {% block left %}
+
+            {% block maincontent %}
+            {% endblock maincontent %}
+            
+            <div class="pagination">
+                <span class="step-links">
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    {% endif %}
+                    {% for page in page_numbers %}
+                    {% if page %}
+                        {% ifequal page page_obj.number %}
+                            <strong>{{ page }}</strong>
+                        {% else %}
+                            <a href="?page={{ page }}">{{ page }}</a>
+                    {% endifequal %}
+                    {% else %}
+                        ...
+                    {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    {% endif %}
+                </span>
+            </div>
+                                                      
+            {% endblock left %}            
+        </div>
+    
+        <div id="right_content">
+            {% block right %}
+            {% endblock right %}   
+        </div>
+        
+           
+    <div id="footer">
+        {% block footer %}
+            <img src="{{ STATIC_URL }}img/footer_logo.gif" alt="" title="" />    
+            Bat Design &copy; 2008
+            <br />
+            <a href="http://csscreme.com/freecsstemplates/" title="free templates">
+            <img src="{{ STATIC_URL }}img/csscreme.gif" alt="free templates" title="free templates" border="0" /></a>
+        {% endblock footer%}
+    </div>
+    </div>
+
+</div>
+</body>
+</html>
