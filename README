@@ -1,0 +1,23 @@
+Django.Project-Bat
+
+Este pequeño proyecto lo cree para ensayar en el framework django,
+El formulario de contacto aun no sirve, soy un poco novato en esto
+y estoy investigando como hacerlo funcionar, la plantilla fue creada
+por la gente de CSSCreme un portal que da plantillas en css/xhtml
+gratuitas y bajo licencias open source, lo unico que yo hice en 
+verdad fue programar lo poco que se ve, como por ejemplo...
+implemente el paginador que viene en el core de django, tambien hice
+un formulario... que aun no funciona muy bien que digamos, e hice 
+que los articulos que se van agregando fueran apareciendo paginados
+y uno tras de otro y tambien implemente la libreria llamada compress.
+
+Hacer funcionar este projecto es muy simple, lo que tienes que hacer
+es clonar el repo, depues, tiene que instalar compress con todas sus
+dependescias desde pip, puedes encontrar esa informacion desde aqui:
+
+http://django_compressor.readthedocs.org/en/latest/installation/
+
+despues de instalar compressor desde pip, no olvides configurar la
+bases de datos en settings.py con su respectivo nombre de ususario
+y despues de hacer estos pasos, puedes dar "./manage.py syncdb" sin
+comillas y listo, queda configurado todo. 
